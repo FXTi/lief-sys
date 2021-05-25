@@ -2,6 +2,10 @@
 name = "lief-sys"
 version = "0.11.5"
 authors = ["FXTi <zjxiang1998@gmail.com>"]
+license = "Apache-2.0"
+description = "Bindings for Quarkslab's LIEF."
+readme = "README.md"
+repository = "https://github.com/FXTi/lief-sys/"
 edition = "2018"
 
 [dependencies]
