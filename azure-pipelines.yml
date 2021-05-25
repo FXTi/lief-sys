@@ -23,6 +23,10 @@ jobs:
             sudo apt-get install ninja-build
           condition: and(eq(variables['Agent.OS'], 'Linux'), ne(variables['System.JobDisplayName'], 'tarpaulin'))
           displayName: "Install Ninja"
+        - script: |
+            apt-get install ninja-build
+          condition: eq(variables['System.JobName'], 'tarpaulin')
+          displayName: "Install Ninja"
 
 resources:
   repositories:
@@ -31,6 +35,3 @@ resources:
       name: crate-ci/azure-pipelines
       ref: refs/heads/v0.4
       endpoint: FXTi
-  containers:
-  - container: cmake
-    image: silkeh/clang:3.9
