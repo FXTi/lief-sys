@@ -2,6 +2,8 @@ jobs:
   - template: default.yml@templates
     parameters:
       minrust: false
+      services:
+        - cmake: cmake
       codecov_token: $(CODECOV_TOKEN)
       setup:
         - script: |
@@ -19,7 +21,7 @@ jobs:
           displayName: "Install Ninja"
         - script: |
             sudo apt-get install ninja-build
-          condition: eq(variables['Agent.OS'], 'Linux')
+          condition: and(eq(variables['Agent.OS'], 'Linux'), ne(variables['System.JobDisplayName'], 'tarpaulin'))
           displayName: "Install Ninja"
         - script: |
             apt-get install ninja-build
@@ -33,3 +35,6 @@ resources:
       name: crate-ci/azure-pipelines
       ref: refs/heads/v0.4
       endpoint: FXTi
+  containers:
+  - container: cmake
+    image: lycantropos/cmake:3.9.5
