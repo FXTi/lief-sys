@@ -3,7 +3,7 @@ jobs:
     parameters:
       setup:
         - checkout: self
-          submodules: true | recursive
+          submodules: recursive
 
 resources:
   repositories:
