@@ -23,7 +23,7 @@ jobs:
           displayName: "Install Ninja"
         - script: |
             apt-get install ninja-build
-          condition: eq(variables['System.JobName'], 'tarpaulin')
+          condition: eq(variables['System.JobDisplayName'], 'tarpaulin')
           displayName: "Install Ninja"
 
 resources:
