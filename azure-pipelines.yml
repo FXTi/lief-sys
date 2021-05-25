@@ -23,10 +23,6 @@ jobs:
             sudo apt-get install ninja-build
           condition: and(eq(variables['Agent.OS'], 'Linux'), ne(variables['System.JobDisplayName'], 'tarpaulin'))
           displayName: "Install Ninja"
-        - script: |
-            apt-get install ninja-build
-          condition: eq(variables['System.JobDisplayName'], 'tarpaulin')
-          displayName: "Install Ninja"
 
 resources:
   repositories:
