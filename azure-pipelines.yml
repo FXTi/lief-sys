@@ -27,9 +27,9 @@ jobs:
     displayName: tarpaulin
     steps:
       - script: |
-            $header = "AUTHORIZATION: bearer $(System.AccessToken)"
-            git -c http.extraheader="$header" submodule sync
-            git -c http.extraheader="$header" submodule update --init --force --depth=1
+          $header = "AUTHORIZATION: bearer $(System.AccessToken)"
+          git -c http.extraheader="$header" submodule sync
+          git -c http.extraheader="$header" submodule update --init --force --depth=1
         displayName: "Checkout recursively"
       - bash: |
           set -ex
