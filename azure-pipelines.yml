@@ -2,8 +2,6 @@ jobs:
   - template: default.yml@templates
     parameters:
       minrust: false
-      services:
-        cmake: cmake
       codecov_token: $(CODECOV_TOKEN)
       setup:
         - script: |
