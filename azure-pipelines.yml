@@ -3,7 +3,7 @@ jobs:
     parameters:
       minrust: false
       services:
-        - cmake: cmake
+        cmake: cmake
       codecov_token: $(CODECOV_TOKEN)
       setup:
         - script: |
