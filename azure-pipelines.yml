@@ -10,7 +10,7 @@ jobs:
             git -c http.extraheader="$header" submodule update --init --force --depth=1
           displayName: "Checkout recursively"
         - script: |
-            choco install ninja
+            choco install ninja llvm
           condition: eq(variables['Agent.OS'], 'Windows_NT')
           displayName: "Install Ninja(Windows)"
         - script: |
