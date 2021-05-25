@@ -50,6 +50,10 @@ fn main() {
         .write_to_file(out_dir_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
 
-    #[cfg(target_family = "unix")]
-    println!("cargo:rustc-link-lib=dylib=stdc++");
+    let target = env::var("TARGET").unwrap();
+    if target.contains("apple") {
+        println!("cargo:rustc-link-lib=dylib=c++");
+    } else if target.contains("linux") {
+        println!("cargo:rustc-link-lib=dylib=stdc++");
+    }
 }
