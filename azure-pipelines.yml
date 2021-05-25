@@ -1,7 +1,9 @@
 jobs:
   - template: default.yml@templates
     parameters:
-      submodules: recursive
+      setup:
+        - checkout: self
+          submodules: true | recursive
 
 resources:
   repositories:
