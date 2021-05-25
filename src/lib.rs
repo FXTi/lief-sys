@@ -23,8 +23,13 @@ mod tests {
                 fs::canonicalize(&hello_lief_pathbuf).expect("fs::canonicalize failed!")
             };
             if let Some(path) = hello_lief_path.to_str() {
-                let hello_lief = elf_parse(CString::new(path).unwrap().as_ptr()).as_mut().unwrap();
-                assert_eq!(hello_lief.header.file_type, LIEF_ELF_E_TYPE::LIEF_ELF_ET_DYN);
+                let hello_lief = elf_parse(CString::new(path).unwrap().as_ptr())
+                    .as_mut()
+                    .unwrap();
+                assert_eq!(
+                    hello_lief.header.file_type,
+                    LIEF_ELF_E_TYPE::LIEF_ELF_ET_DYN
+                );
             }
         }
     }
