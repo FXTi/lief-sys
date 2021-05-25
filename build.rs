@@ -7,8 +7,8 @@ use std::path::PathBuf;
 
 fn main() {
     let out_dir_path = {
-        let out_dir = env::var("OUT_DIR")
-            .expect("Unable to get value of OUT_DIR environment variable");
+        let out_dir =
+            env::var("OUT_DIR").expect("Unable to get value of OUT_DIR environment variable");
         PathBuf::from(out_dir)
     };
 
@@ -23,7 +23,10 @@ fn main() {
         .define("LIEF_INSTALL_COMPILED_EXAMPLES", "off")
         .build();
 
-    println!("cargo:rustc-link-search=native={}", dst.join("lib").display());
+    println!(
+        "cargo:rustc-link-search=native={}",
+        dst.join("lib").display()
+    );
 
     let lief_c_header = {
         let path = out_dir_path.join("include").join("LIEF").join("LIEF.h");

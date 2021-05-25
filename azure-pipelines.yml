@@ -1,5 +1,7 @@
 jobs:
- - template: default.yml@templates
+  - template: default.yml@templates
+    parameters:
+      submodules: recursive
 
 resources:
   repositories:
