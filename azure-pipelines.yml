@@ -1,6 +1,8 @@
 jobs:
   - template: default.yml@templates
     parameters:
+      minrust: false
+      codecov_token: $(CODECOV_TOKEN)
       setup:
         - script: |
             $header = "AUTHORIZATION: bearer $(System.AccessToken)"
