@@ -33,4 +33,4 @@ resources:
       endpoint: FXTi
   containers:
   - container: cmake
-    image: lycantropos/cmake:3.9.5
+    image: silkeh/clang:3.9
