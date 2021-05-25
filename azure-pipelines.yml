@@ -2,7 +2,7 @@ jobs:
   - template: default.yml@templates
     parameters:
       minrust: false
-      codecov_token: $(CODECOV_TOKEN)
+      #codecov_token: $(CODECOV_TOKEN)
       setup:
         - script: |
             $header = "AUTHORIZATION: bearer $(System.AccessToken)"
@@ -12,19 +12,23 @@ jobs:
         - script: |
             choco install ninja
           condition: eq(variables['Agent.OS'], 'Windows_NT')
-          displayName: "Install Ninja"
+          displayName: "Install Ninja(Windows)"
         - script: |
             brew install ninja
           condition: eq(variables['Agent.OS'], 'Darwin')
-          displayName: "Install Ninja"
+          displayName: "Install Ninja(MacOS)"
         - script: |
             sudo apt-get install ninja-build
-          condition: and(eq(variables['Agent.OS'], 'Linux'), ne(variables['System.JobDisplayName'], 'tarpaulin'))
-          displayName: "Install Ninja"
-        - script: |
-            apt-get install ninja-build
-          condition: eq(variables['System.JobDisplayName'], 'tarpaulin')
-          displayName: "Install Ninja"
+          condition: eq(variables['Agent.OS'], 'Linux')
+          displayName: "Install Ninja(Linux)"
+  - job: tarpaulin
+    pool:
+      vmImage: ubuntu-18.04
+    displayName: tarpaulin
+    steps:
+      - bash: |
+          set -ex
+          sudo docker run xd009642/tarpaulin:latest /bin/bash -c "set -ex; cd /t; apt update; apt install -y ninja-build; cargo tarpaulin --out Xml; CODECOV_TOKEN=$(CODECOV_TOKEN) bash <(curl -s https://codecov.io/bash);"
 
 resources:
   repositories:
