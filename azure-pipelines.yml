@@ -28,7 +28,7 @@ jobs:
     steps:
       - bash: |
           set -ex
-          sudo docker run -v $PWD:/t xd009642/tarpaulin:latest /bin/bash -c "set -ex; cd /t; apt update; apt install -y ninja-build; cargo tarpaulin --out Xml; CODECOV_TOKEN=$(CODECOV_TOKEN) bash <(curl -s https://codecov.io/bash);"
+          sudo docker run -v $PWD:/t xd009642/tarpaulin:latest /bin/bash -c "set -ex; cd /t; apt update; apt install -y llvm-dev libclang-dev clang ninja-build; cargo tarpaulin --out Xml; CODECOV_TOKEN=$(CODECOV_TOKEN) bash <(curl -s https://codecov.io/bash);"
 
 resources:
   repositories:
