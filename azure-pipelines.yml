@@ -2,8 +2,10 @@ jobs:
   - template: default.yml@templates
     parameters:
       setup:
-        - checkout: self
-          submodules: recursive
+        - script: |
+            $header = "AUTHORIZATION: bearer $(System.AccessToken)"
+            git -c http.extraheader="$header" submodule sync
+            git -c http.extraheader="$header" submodule update --init --force --depth=1
 
 resources:
   repositories:
