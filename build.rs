@@ -32,7 +32,7 @@ fn main() {
     let lief_c_header = {
         let path = out_dir_path.join("include").join("LIEF").join("LIEF.h");
         if !path.exists() {
-            panic!("LIEF C header not found: {}",);
+            panic!("LIEF C header not found");
         }
         path
     };
