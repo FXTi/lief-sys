@@ -9,20 +9,6 @@ jobs:
             git -c http.extraheader="$header" submodule sync
             git -c http.extraheader="$header" submodule update --init --force --depth=1
           displayName: "Checkout recursively"
-<<<<<<< HEAD
-        - script: |
-            choco install ninja llvm
-          condition: eq(variables['Agent.OS'], 'Windows_NT')
-          displayName: "Install Ninja(Windows)"
-        - script: |
-            brew install ninja
-          condition: eq(variables['Agent.OS'], 'Darwin')
-          displayName: "Install Ninja(MacOS)"
-        - script: |
-            sudo apt-get install ninja-build
-          condition: eq(variables['Agent.OS'], 'Linux')
-          displayName: "Install Ninja(Linux)"
-=======
         #- script: |
         #choco install ninja
         #condition: eq(variables['Agent.OS'], 'Windows_NT')
@@ -35,7 +21,6 @@ jobs:
         #sudo apt-get install ninja-build
         #condition: eq(variables['Agent.OS'], 'Linux')
         #displayName: "Install Ninja(Linux)"
->>>>>>> a1a7fcb (Remove Ninja dependency)
 
 resources:
   repositories:
