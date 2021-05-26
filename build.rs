@@ -17,7 +17,7 @@ fn main() {
     // Run cmake to build lief
     let mut config = Config::new("lief");
     config
-        .generator("Ninja")
+        //.generator("Ninja")
         .define("CMAKE_BUILD_TYPE", "Release")
         .define("BUILD_SHARED_LIBS", "on")
         .define("LIEF_PYTHON_API", "off")
