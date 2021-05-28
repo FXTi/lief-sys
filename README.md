@@ -2,3 +2,5 @@
 
 # lief-sys
 Low-level, unsafe Rust bindings for LIEF library.
+
+If LIEF releases new version and this crate is out of date, please send email to zjxiang1998[AT]gmail.com to info me.
